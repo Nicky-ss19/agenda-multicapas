@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Contactos | Nicky Santana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Sacramento&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/agenda.js"></script>
+</head>
+<body onload="cargarContactos()">
+
+    <header class="cabecera">
+        <p class="mi-nombre">la agenda de Nicky</p>
+        <h1>Agenda de contactos</h1>
+        <p class="subtitulo">Los contactos vienen del servidor del profe, y los que agregues aquí se guardan allá también.</p>
+    </header>
+
+    <main class="contenedor">
+
+        <!-- Formulario para agregar un contacto nuevo (POST) -->
+        <section class="tarjeta formulario">
+            <h2>Nuevo contacto</h2>
+            <form id="formContacto" onsubmit="guardarContacto(event)" novalidate>
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" maxlength="40" placeholder="Ej: María" autocomplete="off">
+
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" maxlength="40" placeholder="Ej: López" autocomplete="off">
+
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" maxlength="20" placeholder="Ej: 809-555-1234" autocomplete="off">
+
+                <button type="submit" id="botonGuardar" class="boton-guardar">Guardar contacto</button>
+                <p id="mensajeFormulario" class="mensaje" role="status"></p>
+            </form>
+        </section>
+
+        <!-- Lista de contactos que vienen del servidor (GET) -->
+        <section class="tarjeta lista">
+            <div class="lista-cabecera">
+                <h2>Mis contactos <span id="contador" class="contador"></span></h2>
+                <button class="boton-recargar" onclick="cargarContactos()">Recargar</button>
+            </div>
+            <input type="search" id="buscador" class="buscador" placeholder="Buscar por nombre, apellido o teléfono..." oninput="filtrarContactos()">
+            <div id="contenido" class="contenido"></div>
+        </section>
+
+    </main>
+
+    <footer class="pie">
+        Tarea 3 de Programación Web | Nicole Alejandra Santana Sánchez (2025-1213) | ITLA 2026-C-3
+    </footer>
+
+</body>
+</html>
